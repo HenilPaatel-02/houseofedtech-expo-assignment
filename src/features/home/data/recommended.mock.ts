@@ -1,4 +1,4 @@
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 
 export const recommendedMovies: Movie[] = [
   {
@@ -6,13 +6,12 @@ export const recommendedMovies: Movie[] = [
     title: "Oppenheimer",
     description: "The story of the atomic bomb's creation.",
 
-    poster:
-      "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
 
     banner:
       "https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
 
-    genre: "Drama",
+    genre: ["Drama"],
 
     rating: 4.9,
 
@@ -29,13 +28,12 @@ export const recommendedMovies: Movie[] = [
 
     description: "A new blade runner unearths a long-buried secret.",
 
-    poster:
-      "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
 
     banner:
       "https://image.tmdb.org/t/p/original/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
 
-    genre: "Sci-Fi",
+    genre: ["Sci-Fi"],
 
     rating: 4.6,
 

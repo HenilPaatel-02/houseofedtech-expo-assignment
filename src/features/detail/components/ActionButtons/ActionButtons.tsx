@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import { ActionButtonsProps } from "./ActionButtons.types";
 import { styles } from "./ActionButtons.styles";

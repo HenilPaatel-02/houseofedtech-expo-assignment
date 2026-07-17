@@ -16,29 +16,29 @@ function DetailHeader({
     <View
       style={[styles.container, { backgroundColor: theme.colors.background }]}
     >
-      {" "}
+      
       <View style={styles.leftContainer}>
-        {" "}
-        <IconButton icon="arrow-left" onPress={onBack} />{" "}
+        
+        <IconButton icon="arrow-left" onPress={onBack} />
         {showTitle && (
           <Text
             variant="titleMedium"
             numberOfLines={1}
             style={[styles.title, { color: theme.colors.onBackground }]}
           >
-            {" "}
-            {title}{" "}
+            
+            {title}
           </Text>
-        )}{" "}
-      </View>{" "}
+        )}
+      </View>
       <View style={styles.rightContainer}>
-        {" "}
+        
         <IconButton
           icon={isFavourite ? "heart" : "heart-outline"}
           onPress={onFavourite}
-        />{" "}
-        <IconButton icon="share-variant-outline" onPress={onShare} />{" "}
-      </View>{" "}
+        />
+        <IconButton icon="share-variant-outline" onPress={onShare} />
+      </View>
     </View>
   );
 }

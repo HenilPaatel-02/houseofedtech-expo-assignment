@@ -1,6 +1,7 @@
-import { MovieDetail } from "../../types/detail.types";
+import { Movie } from "../../../../types/movie.types";
+
 export interface DetailHeroBannerProps {
-  movie: MovieDetail;
+  movie: Movie;
   onPlay?: () => void;
   onAddToList?: () => void;
 }

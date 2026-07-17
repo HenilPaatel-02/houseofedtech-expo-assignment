@@ -5,7 +5,7 @@ import { FlatList, ListRenderItem, View } from "react-native";
 import MovieCard from "../MovieCard";
 import SectionHeader from "../SectionHeader";
 
-import { Movie } from "../../types/movie.types";
+import { Movie } from "../../../../types/movie.types";
 import { ContentCarouselProps } from "./ContentCarousel.types";
 
 import { styles } from "./ContentCarousel.styles";

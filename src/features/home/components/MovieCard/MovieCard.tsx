@@ -67,7 +67,7 @@ function MovieCard({
           },
         ]}
       >
-        {movie.genre}
+        {movie.genre.join(", ")}
       </Text>
     </Pressable>
   );

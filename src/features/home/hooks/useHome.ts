@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { HomeService } from "../services/home.service";
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 import { ContinueWatchingMovie } from "../data/continueWatching.mock";
 
 export function useHome() {

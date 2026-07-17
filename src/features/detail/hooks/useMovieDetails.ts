@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { DetailService } from "../services/detail.service";
-import { MovieDetail } from "../types/detail.types";
+import { Movie} from "../../../types/movie.types";
 export function useMovieDetails(movieId: string) {
-  const [movie, setMovie] = useState<MovieDetail | null>(null);
-  const [relatedMovies, setRelatedMovies] = useState<MovieDetail[]>([]);
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [relatedMovies, setRelatedMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const loadMovieDetails = useCallback(async () => {

@@ -1,5 +1,6 @@
-import { MovieDetail } from "../../types/detail.types";
+import { Movie } from "../../../../types/movie.types";
+
 export interface MetadataSectionProps {
-  movie: MovieDetail;
+  movie: Movie;
   quality?: "HD" | "4K";
 }

@@ -1,4 +1,4 @@
-import { Movie } from "../../types/movie.types";
+import { Movie } from "../../../../types/movie.types";
 
 export interface HeroBannerProps {
   movie: Movie;

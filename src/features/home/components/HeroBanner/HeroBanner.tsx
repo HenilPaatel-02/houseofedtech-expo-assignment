@@ -64,7 +64,7 @@ function HeroBanner({ movie, onPlay, onAddToList }: HeroBannerProps) {
             •
           </Text>
 
-          <Text style={{ color: "white" }}>{movie.genre}</Text>
+          <Text style={{ color: "white" }}>{movie.genre.join(", ")}</Text>
 
           <Text
             style={{

@@ -1,6 +1,6 @@
-import { MovieDetail } from "../types/detail.types";
+import { Movie } from "../../../../src/types/movie.types";
 
-export const relatedMovies: MovieDetail[] = [
+export const relatedMovies: Movie[] = [
   {
     id: "2",
 

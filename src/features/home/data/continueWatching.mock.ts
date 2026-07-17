@@ -1,4 +1,4 @@
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 
 export interface ContinueWatchingMovie extends Movie {
   progress: number; // 0 to 1, e.g. 0.35 = 35% watched
@@ -15,7 +15,7 @@ export const continueWatchingMovies: ContinueWatchingMovie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg",
 
-    genre: "Action",
+    genre: ["Action"],
 
     rating: 4.4,
 
@@ -40,7 +40,7 @@ export const continueWatchingMovies: ContinueWatchingMovie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg",
 
-    genre: "Sci-Fi",
+    genre:[ "Sci-Fi"],
 
     rating: 4.7,
 

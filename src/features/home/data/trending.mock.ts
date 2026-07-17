@@ -1,4 +1,4 @@
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 
 export const trendingMovies: Movie[] = [
   {
@@ -11,7 +11,7 @@ export const trendingMovies: Movie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg",
 
-    genre: "Adventure",
+    genre: ["Adventure"],
 
     rating: 4.5,
 
@@ -33,7 +33,7 @@ export const trendingMovies: Movie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
 
-    genre: "Sci-Fi",
+    genre: ["Sci-Fi"],
 
     rating: 4.7,
 

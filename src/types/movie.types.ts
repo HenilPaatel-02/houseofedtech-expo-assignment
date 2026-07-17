@@ -1,12 +1,15 @@
 export interface Movie {
   id: string;
+
   title: string;
+
   description: string;
 
   poster: string;
+
   banner: string;
 
-  genre: string;
+  genre: string[];
 
   rating: number;
 
@@ -14,5 +17,6 @@ export interface Movie {
 
   year: number;
 
-  featured: boolean;
+  featured?: boolean;
 }
+

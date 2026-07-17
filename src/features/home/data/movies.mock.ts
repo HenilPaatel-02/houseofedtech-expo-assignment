@@ -1,4 +1,4 @@
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 
 export const movies: Movie[] = [
   {
@@ -11,7 +11,7 @@ export const movies: Movie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
 
-    genre: "Sci-Fi",
+    genre: ["Sci-Fi"],
 
     rating: 4.8,
 
@@ -34,7 +34,7 @@ export const movies: Movie[] = [
     banner:
       "https://image.tmdb.org/t/p/original/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg",
 
-    genre: "Adventure",
+    genre: ["Adventure"],
 
     rating: 4.5,
 

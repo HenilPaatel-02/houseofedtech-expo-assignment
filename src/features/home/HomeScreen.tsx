@@ -12,13 +12,13 @@ import ErrorState from "../../components/ErrorState/ErrorState";
 import EmptyState from "../../components/EmptyState/EmptyState";
 
 import { useHome } from "./hooks/useHome";
-import { Movie } from "./types/movie.types";
+import { Movie } from "../../types/movie.types";
 import { RootStackParamList } from "../../navigation/navigation.types";
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
-  const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation<HomeNavigationProp>();
   const {
     featured,
     trending,
@@ -39,7 +39,9 @@ export default function HomeScreen() {
 
   const handleMoviePress = useCallback(
     (movie: Movie) => {
-      navigation.navigate("Detail", { id: movie.id });
+      navigation.navigate("Detail", {
+        id: movie.id,
+      });
     },
     [navigation],
   );

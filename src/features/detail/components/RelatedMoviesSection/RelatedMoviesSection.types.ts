@@ -1,5 +1,5 @@
-import { Movie } from "../../../home/types/movie.types";
-import { MovieDetail } from "../../types/detail.types";
+import { Movie } from "../../../../types/movie.types";
+
 export interface RelatedMoviesSectionProps {
   movies: Movie[];
   onMoviePress?: (movie: Movie) => void;

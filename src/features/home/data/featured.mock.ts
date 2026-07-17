@@ -1,4 +1,4 @@
-import { Movie } from "../types/movie.types";
+import { Movie } from "../../../types/movie.types";
 
 export const featuredMovie: Movie = {
   id: "1",
@@ -9,7 +9,7 @@ export const featuredMovie: Movie = {
 
   banner: "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
 
-  genre: "Sci-Fi",
+  genre: ["Sci-Fi"],
 
   rating: 4.8,
 
