@@ -12,32 +12,32 @@ function DescriptionSection({
   const [expanded, setExpanded] = useState(false);
   return (
     <View style={styles.container}>
-      {" "}
+      
       <Text
         variant="titleLarge"
         style={[styles.title, { color: theme.colors.onSurface }]}
       >
-        {" "}
-        {title}{" "}
-      </Text>{" "}
+        
+        {title}
+      </Text>
       <Text
         variant="bodyMedium"
         numberOfLines={expanded ? undefined : collapsedLines}
         style={[styles.description, { color: theme.colors.onSurfaceVariant }]}
       >
-        {" "}
-        {description}{" "}
-      </Text>{" "}
+        
+        {description}
+      </Text>
       <Pressable onPress={() => setExpanded(!expanded)}>
-        {" "}
+        
         <Text
           variant="labelLarge"
           style={[styles.readMore, { color: theme.colors.primary }]}
         >
-          {" "}
-          {expanded ? "Read Less" : "Read More"}{" "}
-        </Text>{" "}
-      </Pressable>{" "}
+          
+          {expanded ? "Read Less" : "Read More"}
+        </Text>
+      </Pressable>
     </View>
   );
 }
