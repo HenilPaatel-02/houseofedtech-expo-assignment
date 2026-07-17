@@ -1,34 +1,94 @@
+import React, { useCallback, useState } from "react";
+import { RefreshControl, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
-
-import SectionHeader from "./components/SectionHeader";
-import MovieCard from "./components/MovieCard";
-
-import { movies } from "./data/movies.mock";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import HeroBanner from "./components/HeroBanner";
-import { featuredMovie } from "./data/featured.mock";
 import ContentCarousel from "./components/ContentCarousel";
-import { trendingMovies } from "./data/trending.mock";
-import { recommendedMovies } from "./data/recommended.mock";
-import { continueWatchingMovies } from "./data/continueWatching.mock";
+
+import Loader from "../../components/Loader/Loader";
+import ErrorState from "../../components/ErrorState/ErrorState";
+import EmptyState from "../../components/EmptyState/EmptyState";
+
+import { useHome } from "./hooks/useHome";
+import { Movie } from "./types/movie.types";
+import { RootStackParamList } from "../../navigation/navigation.types";
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 export default function HomeScreen() {
+  const navigation = useNavigation<NavigationProp>();
+  const {
+    featured,
+    trending,
+    recommended,
+    continueWatching,
+    loading,
+    error,
+    refresh,
+  } = useHome();
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await refresh();
+    setRefreshing(false);
+  }, [refresh]);
+
+  const handleMoviePress = useCallback(
+    (movie: Movie) => {
+      navigation.navigate("Detail", { id: movie.id });
+    },
+    [navigation],
+  );
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorState message={error} onRetry={refresh} />;
+  }
+
+  if (featured == null && trending.length === 0) {
+    return <EmptyState title="No Content Found" />;
+  }
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView>
-        <HeroBanner movie={featuredMovie} />
-        <SectionHeader title="Trending" />
-        <ContentCarousel title="Trending" data={trendingMovies} />
-        <MovieCard movie={movies[0]} />
-        <SectionHeader title="Recommended" />
-        <ContentCarousel title="Recommended" data={recommendedMovies} />
-        <MovieCard movie={movies[0]} />
-        <SectionHeader title="Continue Watching" />
+    <SafeAreaView style={{ flex: 1 }} edges={["top"]}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        {featured && (
+          <HeroBanner
+            movie={featured}
+            onPlay={handleMoviePress}
+            onAddToList={() => {}}
+          />
+        )}
+
+        <ContentCarousel
+          title="Trending"
+          data={trending}
+          onPressMovie={handleMoviePress}
+        />
+
+        <ContentCarousel
+          title="Recommended"
+          data={recommended}
+          onPressMovie={handleMoviePress}
+        />
+
         <ContentCarousel
           title="Continue Watching"
-          data={continueWatchingMovies}
+          data={continueWatching}
+          onPressMovie={handleMoviePress}
         />
-        <MovieCard movie={movies[0]} />
       </ScrollView>
     </SafeAreaView>
   );

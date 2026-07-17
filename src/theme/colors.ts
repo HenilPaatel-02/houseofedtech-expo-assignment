@@ -16,6 +16,7 @@ export const LightColors = {
   error: "#EF4444",
 
   card: "#FFFFFF",
+ 
 };
 
 export const DarkColors = {
@@ -34,4 +35,11 @@ export const DarkColors = {
   error: "#EF4444",
 
   card: "#1E293B",
+};
+
+export const COLORS = {
+  ...LightColors,
+   textPrimary: "#111827",
+  textMuted: "#6B7280",
+  
 };
