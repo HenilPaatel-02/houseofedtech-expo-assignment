@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     marginVertical: 24,
   },
   buttonRow: {
+    padding:8,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 28,

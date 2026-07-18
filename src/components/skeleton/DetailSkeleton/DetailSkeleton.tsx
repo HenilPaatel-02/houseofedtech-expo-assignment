@@ -3,78 +3,69 @@ import { ScrollView, View } from "react-native";
 import { useTheme } from "react-native-paper";
 import SkeletonBox from "../SkeletonBox";
 import { styles } from "./DetailSkeleton.styles";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import DetailHeader from "../../../features/detail/components/DetailHeader";
+
 function DetailSkeleton() {
   const theme = useTheme();
   return (
-    <ScrollView
-      style={{ flex: 1, backgroundColor: theme.colors.background }}
-      showsVerticalScrollIndicator={false}
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: theme.colors.background,
+      }}
     >
-      theme.colors.surface
-      <View style={styles.container}>
-        theme.colors.surface
-        {/* Hero Banner */}theme.colors.surface
-        <SkeletonBox width="100%" height={340} borderRadius={0} />
-        theme.colors.surface
-        <View style={styles.content}>
-          theme.colors.surface
-          {/* Movie Title */} <SkeletonBox width="70%" height={34} />
-          theme.colors.surface
-          {/* Metadata */}theme.colors.surface
-          <View style={styles.metadataRow}>
-            theme.colors.surface
-            <SkeletonBox width={70} height={18} />
-            theme.colors.surface
-            <SkeletonBox width={70} height={18} />
-            theme.colors.surface
-            <SkeletonBox width={70} height={18} />
-            theme.colors.surface
-          </View>
-          theme.colors.surface
-          {/* Play Button */}theme.colors.surface
-          <SkeletonBox width="100%" height={48} borderRadius={12} />
-          theme.colors.surface
-          {/* Action Buttons */}theme.colors.surface
-          <View style={styles.buttonRow}>
-            theme.colors.surface
-            <SkeletonBox width={100} height={42} />
-            theme.colors.surface
-            <SkeletonBox width={100} height={42} />
-            theme.colors.surface
-            <SkeletonBox width={100} height={42} />
-            theme.colors.surface
-          </View>
-          theme.colors.surface
-          {/* Description */} <SkeletonBox width="45%" height={24} />
-          theme.colors.surface
-          <SkeletonBox width="100%" height={16} style={{ marginTop: 20 }} />
-          theme.colors.surface
-          <SkeletonBox width="95%" height={16} style={{ marginTop: 12 }} />
-          theme.colors.surface
-          <SkeletonBox width="80%" height={16} style={{ marginTop: 12 }} />
-          theme.colors.surface
-          {/* Related Movies */}theme.colors.surface
-          <View style={styles.relatedSection}>
-            theme.colors.surface
-            <SkeletonBox width={170} height={24} />
-            theme.colors.surface
-            <View style={styles.cardRow}>
-              theme.colors.surface
-              <SkeletonBox width={110} height={170} />
-              theme.colors.surface
-              <SkeletonBox width={110} height={170} />
-              theme.colors.surface
-              <SkeletonBox width={110} height={170} />
-              theme.colors.surface
+      <DetailHeader
+        title=""
+        showTitle={false}
+        onBack={() => {}}
+        onFavourite={() => {}}
+        onShare={() => {}}
+      />
+
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: theme.colors.background,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.container}>
+          <SkeletonBox width="100%" height={420} borderRadius={0} />
+          <View style={styles.content}>
+            <SkeletonBox width="65%" height={34} />
+
+            <View style={styles.metadataRow}>
+              <SkeletonBox width={70} height={18} />
+              <SkeletonBox width={70} height={18} />
+              <SkeletonBox width={70} height={18} />
             </View>
-            theme.colors.surface
+
+            <SkeletonBox width="100%" height={48} borderRadius={12} />
+
+            <View style={styles.buttonRow}>
+              <SkeletonBox width={100} height={42} />
+              <SkeletonBox width={100} height={42} />
+              <SkeletonBox width={100} height={42} />
+            </View>
+            <SkeletonBox width="45%" height={24} />
+            <SkeletonBox width="100%" height={16} style={{ marginTop: 20 }} />
+            <SkeletonBox width="95%" height={16} style={{ marginTop: 12 }} />
+            <SkeletonBox width="80%" height={16} style={{ marginTop: 12 }} />
+
+            <View style={styles.relatedSection}>
+              <SkeletonBox width={170} height={24} />
+              <View style={styles.cardRow}>
+                <SkeletonBox width={110} height={170} />
+                <SkeletonBox width={110} height={170} />
+                <SkeletonBox width={110} height={170} />
+              </View>
+            </View>
           </View>
-          theme.colors.surface
         </View>
-        theme.colors.surface
-      </View>
-      theme.colors.surface
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 export default memo(DetailSkeleton);
