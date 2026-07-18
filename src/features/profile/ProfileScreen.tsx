@@ -5,7 +5,6 @@ import ProfileHeader from "./components/ProfileHeader";
 import SettingsSection from "./components/SettingsSection";
 import SettingsItem from "./components/SettingsItem";
 import AppVersion from "./components/AppVersion";
-import Loader from "../../components/Loader/Loader";
 import ErrorState from "../../components/ErrorState/ErrorState";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import { useProfile } from "./hooks/useProfile";

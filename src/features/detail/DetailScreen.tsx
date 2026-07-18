@@ -8,7 +8,7 @@ import MetadataSection from "./components/MetadataSection";
 import ActionButtons from "./components/ActionButtons";
 import DescriptionSection from "./components/DescriptionSection";
 import RelatedMoviesSection from "./components/RelatedMoviesSection";
-import Loader from "../../components/Loader/Loader";
+
 import ErrorState from "../../components/ErrorState/ErrorState";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import { useMovieDetails } from "./hooks/useMovieDetails";

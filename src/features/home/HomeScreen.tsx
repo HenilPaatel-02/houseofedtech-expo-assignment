@@ -7,7 +7,6 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import HeroBanner from "./components/HeroBanner";
 import ContentCarousel from "./components/ContentCarousel";
 
-import Loader from "../../components/Loader/Loader";
 import ErrorState from "../../components/ErrorState/ErrorState";
 import EmptyState from "../../components/EmptyState/EmptyState";
 
