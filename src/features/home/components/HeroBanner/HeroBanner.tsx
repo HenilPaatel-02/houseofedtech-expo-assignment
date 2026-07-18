@@ -22,7 +22,7 @@ function HeroBanner({ movie, onPlay, onAddToList }: HeroBannerProps) {
         source={movie.banner}
         style={styles.image}
         contentFit="cover"
-        transition={400}
+        transition={250} //400
       />
 
       <LinearGradient

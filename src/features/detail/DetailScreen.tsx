@@ -65,15 +65,12 @@ export default function DetailScreen() {
   const handleShare = () => {
     console.log("Share");
   };
-  const handleRelatedMoviePress = (selectedMovie: typeof movie) => {
-    navigation.push("Detail", {
-      id: movie.id,
-    });
-  };
-
-  //   navigation.navigate("Detail", {
-  //   id: movie.id,
-  // });
+  const handleRelatedMoviePress = useCallback(
+    (selectedMovie: Movie) => {
+      navigation.push("Detail", { id: selectedMovie.id });
+    },
+    [navigation],
+  );
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>

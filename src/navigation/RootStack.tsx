@@ -14,11 +14,20 @@ export default function RootStack() {
       screenOptions={{
         headerShown: false,
         animation: "slide_from_right",
+        animationDuration: 280,
+        gestureEnabled: true,
+        fullScreenGestureEnabled: true,
+        presentation: "card",
+        contentStyle: { backgroundColor: "transparent" },
       }}
     >
       <Stack.Screen name="MainTabs" component={BottomTabs} />
 
-      <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={{ animation: "fade_from_bottom", animationDuration: 320 }}
+      />
     </Stack.Navigator>
   );
 }

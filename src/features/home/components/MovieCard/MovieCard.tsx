@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 
 import { Pressable, View } from "react-native";
 
@@ -21,12 +21,14 @@ function MovieCard({
 }: MovieCardProps) {
   const theme = useTheme();
   const { animatedStyle, pressIn, pressOut } = usePressScale();
+  const handlePress = useCallback(() => {
+    onPress?.(movie);
+  }, [movie, onPress]);
   return (
     <Animated.View style={animatedStyle}>
-      
       <Pressable
         style={styles.container}
-        onPress={() => onPress?.(movie)}
+        onPress={handlePress}
         onPressIn={pressIn}
         onPressOut={pressOut}
       >

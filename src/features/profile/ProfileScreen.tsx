@@ -77,11 +77,10 @@ export default function ProfileScreen() {
             onEditProfile={handleEditProfile}
           />
         </Animated.View>
-        <Animated.View entering={fadeSlide(140)}>
 
+        <Animated.View entering={fadeSlide(140)}>
           <SettingsSection title="General">
             <Animated.View entering={fadeSlide(220)}>
-      
               <SettingsItem
                 title="Dark Mode"
                 subtitle="Switch app appearance"
@@ -109,28 +108,35 @@ export default function ProfileScreen() {
             </Animated.View>
           </SettingsSection>
         </Animated.View>
-        <SettingsSection title="Support">
-          <SettingsItem
-            title="Help Center"
-            leftIcon="help-circle-outline"
-            onPress={handleHelp}
-          />
-          <SettingsItem
-            title="Privacy Policy"
-            leftIcon="shield-lock-outline"
-            onPress={handlePrivacy}
-          />
-          <SettingsItem
-            title="Rate App"
-            leftIcon="star-outline"
-            onPress={handleRateApp}
-          />
-          <SettingsItem
-            title="About"
-            leftIcon="information-outline"
-            onPress={handleAbout}
-          />
-        </SettingsSection>
+
+        <Animated.View entering={fadeSlide(140)}>
+          <SettingsSection title="Support">
+            {" "}
+            <Animated.View entering={fadeSlide(220)}>
+              <SettingsItem
+                title="Help Center"
+                leftIcon="help-circle-outline"
+                onPress={handleHelp}
+              />
+              <SettingsItem
+                title="Privacy Policy"
+                leftIcon="shield-lock-outline"
+                onPress={handlePrivacy}
+              />
+              <SettingsItem
+                title="Rate App"
+                leftIcon="star-outline"
+                onPress={handleRateApp}
+              />
+              <SettingsItem
+                title="About"
+                leftIcon="information-outline"
+                onPress={handleAbout}
+              />{" "}
+            </Animated.View>
+          </SettingsSection>{" "}
+        </Animated.View>
+
         <Animated.View entering={fadeSlide(300)}>
           <AppVersion
             appName="House of EdTech Assignment"
