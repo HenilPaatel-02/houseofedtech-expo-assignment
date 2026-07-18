@@ -7,15 +7,13 @@ function SettingsSection({ title, children }: SettingsSectionProps) {
   const theme = useTheme();
   return (
     <View style={styles.container}>
-      
       <Text
         variant="titleMedium"
         style={[styles.title, { color: theme.colors.primary }]}
       >
-        
         {title}
       </Text>
-      <View style={styles.content}> {children} </View>
+      <View style={styles.content}>{children}</View>
     </View>
   );
 }

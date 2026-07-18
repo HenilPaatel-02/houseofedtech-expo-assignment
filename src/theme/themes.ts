@@ -1,5 +1,3 @@
-// src/theme/paperTheme.ts
-
 import { MD3DarkTheme, MD3LightTheme } from "react-native-paper";
 
 import { DarkColors, LightColors } from "./colors";

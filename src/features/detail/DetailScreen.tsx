@@ -15,6 +15,7 @@ import { useMovieDetails } from "./hooks/useMovieDetails";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/navigation.types";
 import { Movie } from "../../types/movie.types";
+import { useTheme } from "react-native-paper";
 
 type DetailScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -23,6 +24,7 @@ type DetailScreenNavigationProp = NativeStackNavigationProp<
 type DetailRouteProp = RouteProp<RootStackParamList, "Detail">;
 
 export default function DetailScreen() {
+  const theme = useTheme();
   const navigation = useNavigation<DetailScreenNavigationProp>();
 
   const route = useRoute<DetailRouteProp>();
@@ -66,12 +68,12 @@ export default function DetailScreen() {
     });
   };
 
-//   navigation.navigate("Detail", {
-//   id: movie.id,
-// });
+  //   navigation.navigate("Detail", {
+  //   id: movie.id,
+  // });
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
       <DetailHeader
         title={movie.title}
         showTitle={false}
@@ -80,6 +82,9 @@ export default function DetailScreen() {
         onShare={handleShare}
       />
       <ScrollView
+        style={{
+          backgroundColor: theme.colors.background,
+        }}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl refreshing={false} onRefresh={onRefresh} />

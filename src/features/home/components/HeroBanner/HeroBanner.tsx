@@ -36,7 +36,7 @@ function HeroBanner({ movie, onPlay, onAddToList }: HeroBannerProps) {
           style={[
             styles.title,
             {
-              color: theme.colors.onPrimary,
+              color: "#FFFFFF",
             },
           ]}
         >

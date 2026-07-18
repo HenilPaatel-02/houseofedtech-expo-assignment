@@ -14,11 +14,13 @@ import EmptyState from "../../components/EmptyState/EmptyState";
 import { useHome } from "./hooks/useHome";
 import { Movie } from "../../types/movie.types";
 import { RootStackParamList } from "../../navigation/navigation.types";
+import { useTheme } from "react-native-paper";
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
+  const theme = useTheme();
   const {
     featured,
     trending,
@@ -59,8 +61,14 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }} edges={["top"]}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.background }}
+      edges={["top"]}
+    >
       <ScrollView
+        style={{
+          backgroundColor: theme.colors.background,
+        }}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

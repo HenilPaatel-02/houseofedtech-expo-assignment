@@ -1,7 +1,4 @@
-export * from "./paperTheme";
-
+export * from "./ThemeContext";
 export * from "./colors";
-
-export * from "./useAppTheme";
-
-export { default as AppThemeProvider } from "./ThemeProvider";
+export * from "./useThemeMode";
+export * from "./themes";
