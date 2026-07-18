@@ -21,9 +21,9 @@ The project demonstrates clean architecture, reusable components, responsive UI,
     <td align="center"><b>Profile</b></td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/home.png" width="200" /></td>
-    <td><img src="assets/screenshots/detail.png" width="200" /></td>
-    <td><img src="assets/screenshots/profile.png" width="200" /></td>
+    <td><img src="assets/screenshots/home.jpg" width="200" /></td>
+    <td><img src="assets/screenshots/detail.jpg" width="200" /></td>
+    <td><img src="assets/screenshots/profile.jpg" width="200" /></td>
   </tr>
 </table>
 
