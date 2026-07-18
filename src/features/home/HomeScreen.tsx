@@ -17,6 +17,7 @@ import { useTheme } from "react-native-paper";
 import HomeSkeleton from "../../components/skeleton/HomeSkeleton";
 import Animated from "react-native-reanimated";
 import { fadeSlide } from "../../animations";
+import { useRefresh } from "../../hooks/useRefresh";
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -33,13 +34,7 @@ export default function HomeScreen() {
     refresh,
   } = useHome();
 
-  const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = useCallback(async () => {
-    setRefreshing(true);
-    await refresh();
-    setRefreshing(false);
-  }, [refresh]);
+  const { refreshing, onRefresh } = useRefresh(refresh);
 
   const handleMoviePress = useCallback(
     (movie: Movie) => {

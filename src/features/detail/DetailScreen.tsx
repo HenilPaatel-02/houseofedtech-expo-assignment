@@ -17,7 +17,7 @@ import { RootStackParamList } from "../../navigation/navigation.types";
 import { Movie } from "../../types/movie.types";
 import { useTheme } from "react-native-paper";
 import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
-
+import { useRefresh } from "../../hooks/useRefresh";
 import Animated from "react-native-reanimated";
 import { fadeSlide } from "../../animations";
 
@@ -36,20 +36,8 @@ export default function DetailScreen() {
 
   const { movie, relatedMovies, loading, error, refresh } = useMovieDetails(id);
 
-  const onRefresh = useCallback(() => {
-    refresh();
-  }, [refresh]);
+  const { refreshing, onRefresh } = useRefresh(refresh);
 
-  if (loading) {
-    return <DetailSkeleton />;
-  }
-  if (error) {
-    return <ErrorState message={error} onRetry={refresh} />;
-  }
-
-  if (!movie) {
-    return <EmptyState title="Movie Not Found" />;
-  }
   const handleBack = () => {
     navigation.goBack();
   };
@@ -72,6 +60,17 @@ export default function DetailScreen() {
     [navigation],
   );
 
+  if (loading) {
+    return <DetailSkeleton />;
+  }
+  if (error) {
+    return <ErrorState message={error} onRetry={refresh} />;
+  }
+
+  if (!movie) {
+    return <EmptyState title="Movie Not Found" />;
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
       <DetailHeader
@@ -87,7 +86,13 @@ export default function DetailScreen() {
         }}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={false} onRefresh={onRefresh} />
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[theme.colors.primary]}
+            progressBackgroundColor={theme.colors.background}
+            tintColor={theme.colors.primary}
+          />
         }
       >
         <DetailHeroBanner

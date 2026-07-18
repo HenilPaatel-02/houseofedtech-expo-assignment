@@ -11,17 +11,16 @@ import { useProfile } from "./hooks/useProfile";
 import { useAppTheme } from "../../theme";
 import { useTheme } from "react-native-paper";
 import ProfileSkeleton from "../../components/skeleton/ProfileSkeleton";
-
+import { useRefresh } from "../../hooks/useRefresh";
 import Animated from "react-native-reanimated";
 import { fadeSlide } from "../../animations";
+
 export default function ProfileScreen() {
   const theme = useTheme();
   const { profile, loading, error, refresh } = useProfile();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const { mode, setMode } = useAppTheme();
-  const onRefresh = useCallback(() => {
-    refresh();
-  }, [refresh]);
+  const { refreshing, onRefresh } = useRefresh(refresh);
 
   const handleEditProfile = () => {
     console.log("Edit Profile");
@@ -65,7 +64,13 @@ export default function ProfileScreen() {
         }}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={false} onRefresh={onRefresh} />
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[theme.colors.primary]}
+            progressBackgroundColor={theme.colors.background}
+            tintColor={theme.colors.primary}
+          />
         }
       >
         <Animated.View entering={fadeSlide(50)}>
@@ -111,7 +116,7 @@ export default function ProfileScreen() {
 
         <Animated.View entering={fadeSlide(140)}>
           <SettingsSection title="Support">
-            {" "}
+  
             <Animated.View entering={fadeSlide(220)}>
               <SettingsItem
                 title="Help Center"
@@ -132,9 +137,9 @@ export default function ProfileScreen() {
                 title="About"
                 leftIcon="information-outline"
                 onPress={handleAbout}
-              />{" "}
+              />
             </Animated.View>
-          </SettingsSection>{" "}
+          </SettingsSection>
         </Animated.View>
 
         <Animated.View entering={fadeSlide(300)}>
