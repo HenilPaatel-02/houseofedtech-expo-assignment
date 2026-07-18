@@ -23,7 +23,7 @@ function MovieCard({
   const { animatedStyle, pressIn, pressOut } = usePressScale();
   return (
     <Animated.View style={animatedStyle}>
-      {" "}
+      
       <Pressable
         style={styles.container}
         onPress={() => onPress?.(movie)}
@@ -78,7 +78,7 @@ function MovieCard({
         >
           {movie.genre.join(", ")}
         </Text>
-      </Pressable>{" "}
+      </Pressable>
     </Animated.View>
   );
 }

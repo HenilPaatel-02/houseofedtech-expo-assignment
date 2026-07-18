@@ -11,6 +11,9 @@ import { useProfile } from "./hooks/useProfile";
 import { useAppTheme } from "../../theme";
 import { useTheme } from "react-native-paper";
 import ProfileSkeleton from "../../components/skeleton/ProfileSkeleton";
+
+import Animated from "react-native-reanimated";
+import { fadeSlide } from "../../animations";
 export default function ProfileScreen() {
   const theme = useTheme();
   const { profile, loading, error, refresh } = useProfile();
@@ -65,39 +68,47 @@ export default function ProfileScreen() {
           <RefreshControl refreshing={false} onRefresh={onRefresh} />
         }
       >
-        <ProfileHeader
-          name={profile.name}
-          email={profile.email}
-          role={profile.role}
-          avatar={profile.avatar}
-          onEditProfile={handleEditProfile}
-        />
-        <SettingsSection title="General">
-          <SettingsItem
-            title="Dark Mode"
-            subtitle="Switch app appearance"
-            leftIcon="theme-light-dark"
-            showSwitch
-            switchValue={mode === "dark"}
-            onSwitchChange={(enabled) => {
-              setMode(enabled ? "dark" : "light");
-            }}
+        <Animated.View entering={fadeSlide(50)}>
+          <ProfileHeader
+            name={profile.name}
+            email={profile.email}
+            role={profile.role}
+            avatar={profile.avatar}
+            onEditProfile={handleEditProfile}
           />
-          <SettingsItem
-            title="Notifications"
-            subtitle="Enable push notifications"
-            leftIcon="bell-outline"
-            showSwitch
-            switchValue={notificationsEnabled}
-            onSwitchChange={setNotificationsEnabled}
-          />
-          <SettingsItem
-            title="Downloads"
-            subtitle="Manage offline content"
-            leftIcon="download-outline"
-            onPress={handleDownloads}
-          />
-        </SettingsSection>
+        </Animated.View>
+        <Animated.View entering={fadeSlide(140)}>
+          {" "}
+          <SettingsSection title="General">
+            <Animated.View entering={fadeSlide(220)}>
+              {" "}
+              <SettingsItem
+                title="Dark Mode"
+                subtitle="Switch app appearance"
+                leftIcon="theme-light-dark"
+                showSwitch
+                switchValue={mode === "dark"}
+                onSwitchChange={(enabled) => {
+                  setMode(enabled ? "dark" : "light");
+                }}
+              />
+              <SettingsItem
+                title="Notifications"
+                subtitle="Enable push notifications"
+                leftIcon="bell-outline"
+                showSwitch
+                switchValue={notificationsEnabled}
+                onSwitchChange={setNotificationsEnabled}
+              />
+              <SettingsItem
+                title="Downloads"
+                subtitle="Manage offline content"
+                leftIcon="download-outline"
+                onPress={handleDownloads}
+              />
+            </Animated.View>
+          </SettingsSection>
+        </Animated.View>
         <SettingsSection title="Support">
           <SettingsItem
             title="Help Center"
@@ -120,12 +131,14 @@ export default function ProfileScreen() {
             onPress={handleAbout}
           />
         </SettingsSection>
-        <AppVersion
-          appName="House of EdTech Assignment"
-          version="1.0.0"
-          buildNumber="1"
-          copyright="© 2026 Henil Patel"
-        />
+        <Animated.View entering={fadeSlide(300)}>
+          <AppVersion
+            appName="House of EdTech Assignment"
+            version="1.0.0"
+            buildNumber="1"
+            copyright="© 2026 Henil Patel"
+          />
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );

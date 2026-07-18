@@ -15,6 +15,8 @@ import { Movie } from "../../types/movie.types";
 import { RootStackParamList } from "../../navigation/navigation.types";
 import { useTheme } from "react-native-paper";
 import HomeSkeleton from "../../components/skeleton/HomeSkeleton";
+import Animated from "react-native-reanimated";
+import { fadeSlide } from "../../animations";
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -80,24 +82,28 @@ export default function HomeScreen() {
             onAddToList={() => {}}
           />
         )}
+        <Animated.View entering={fadeSlide(100)}>
+          <ContentCarousel
+            title="Trending"
+            data={trending}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
+        <Animated.View entering={fadeSlide(180)}>
+          <ContentCarousel
+            title="Recommended"
+            data={recommended}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
 
-        <ContentCarousel
-          title="Trending"
-          data={trending}
-          onPressMovie={handleMoviePress}
-        />
-
-        <ContentCarousel
-          title="Recommended"
-          data={recommended}
-          onPressMovie={handleMoviePress}
-        />
-
-        <ContentCarousel
-          title="Continue Watching"
-          data={continueWatching}
-          onPressMovie={handleMoviePress}
-        />
+        <Animated.View entering={fadeSlide(260)}>
+          <ContentCarousel
+            title="Continue Watching"
+            data={continueWatching}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );

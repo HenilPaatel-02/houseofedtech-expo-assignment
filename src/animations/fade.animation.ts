@@ -4,6 +4,7 @@ import {
   withTiming,
 } from "react-native-reanimated";
 import { useEffect } from "react";
+
 export function useFadeAnimation(duration = 350) {
   const opacity = useSharedValue(0);
   useEffect(() => {

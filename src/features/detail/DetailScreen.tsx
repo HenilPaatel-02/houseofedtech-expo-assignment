@@ -18,6 +18,9 @@ import { Movie } from "../../types/movie.types";
 import { useTheme } from "react-native-paper";
 import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
 
+import Animated from "react-native-reanimated";
+import { fadeSlide } from "../../animations";
+
 type DetailScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "Detail"
@@ -95,18 +98,29 @@ export default function DetailScreen() {
           onPlay={handlePlay}
           onAddToList={handleAddToList}
         />
-        <MetadataSection movie={movie} quality="4K" />
-        <ActionButtons
-          onPlay={handlePlay}
-          onAddToList={handleAddToList}
-          onFavourite={handleFavourite}
-          onShare={handleShare}
-        />
-        <DescriptionSection description={movie.description} />
-        <RelatedMoviesSection
-          movies={relatedMovies}
-          onMoviePress={handleRelatedMoviePress}
-        />
+        <Animated.View entering={fadeSlide(80)}>
+          <MetadataSection movie={movie} quality="4K" />
+        </Animated.View>
+
+        <Animated.View entering={fadeSlide(140)}>
+          <ActionButtons
+            onPlay={handlePlay}
+            onAddToList={handleAddToList}
+            onFavourite={handleFavourite}
+            onShare={handleShare}
+          />
+        </Animated.View>
+
+        <Animated.View entering={fadeSlide(220)}>
+          
+          <DescriptionSection description={movie.description} />
+        </Animated.View>
+        <Animated.View entering={fadeSlide(300)}>
+          <RelatedMoviesSection
+            movies={relatedMovies}
+            onMoviePress={handleRelatedMoviePress}
+          />
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );
