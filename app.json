@@ -16,11 +16,20 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.henilpatel_20.HouseOfEdtechAssignment"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-image", "expo-status-bar"]
+    "plugins": [
+      "expo-image",
+      "expo-status-bar"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5a5fca20-07bb-4460-af8a-81cc3f45ce99"
+      }
+    }
   }
 }
