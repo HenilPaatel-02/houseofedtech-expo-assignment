@@ -11,6 +11,7 @@ import EmptyState from "../../components/EmptyState/EmptyState";
 import { useProfile } from "./hooks/useProfile";
 import { useAppTheme } from "../../theme";
 import { useTheme } from "react-native-paper";
+import ProfileSkeleton from "../../components/skeleton/ProfileSkeleton";
 export default function ProfileScreen() {
   const theme = useTheme();
   const { profile, loading, error, refresh } = useProfile();
@@ -43,7 +44,7 @@ export default function ProfileScreen() {
   };
 
   if (loading) {
-    return <Loader />;
+    return <ProfileSkeleton />;
   }
 
   if (error) {
