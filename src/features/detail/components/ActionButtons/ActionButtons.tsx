@@ -1,8 +1,10 @@
 import React, { memo } from "react";
 import { Text, View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, IconButton } from "react-native-paper";
 import { ActionButtonsProps } from "./ActionButtons.types";
 import { styles } from "./ActionButtons.styles";
+
+import AnimatedButton from "../../../../components/common/AnimatedButton";
 function ActionButtons({
   isFavourite = false,
   onPlay,
@@ -12,39 +14,25 @@ function ActionButtons({
 }: ActionButtonsProps) {
   return (
     <View style={styles.container}>
-      <Button
-        mode="contained"
-        icon="play"
-        style={styles.playButton}
-        onPress={onPlay}
-      >
-        Play Now
-      </Button>
+      <AnimatedButton onPress={onPlay}>
+        <Button mode="contained" icon="play" style={styles.playButton}>
+          Play
+        </Button>
+      </AnimatedButton>
+
       <View style={styles.secondaryRow}>
-        <Button
-          mode="outlined"
-          icon="plus"
-          style={styles.secondaryButton}
-          onPress={onAddToList}
-        >
-          My List
-        </Button>
-        <Button
-          mode="outlined"
-          icon={isFavourite ? "heart" : "heart-outline"}
-          style={styles.secondaryButton}
-          onPress={onFavourite}
-        >
-          Favorite
-        </Button>
-        <Button
-          mode="outlined"
-          icon="share-variant-outline"
-          style={styles.secondaryButton}
-          onPress={onShare}
-        >
-          Share
-        </Button>
+        <AnimatedButton onPress={onAddToList}>
+          <Button mode="outlined" icon="plus" style={styles.secondaryButton}>
+            My List
+          </Button>
+        </AnimatedButton>
+
+        <AnimatedButton onPress={onFavourite}>
+          <IconButton icon={isFavourite ? "heart" : "heart-outline"} />
+        </AnimatedButton>
+        <AnimatedButton onPress={onShare}>
+          <IconButton icon="share-variant-outline" />
+        </AnimatedButton>
       </View>
     </View>
   );

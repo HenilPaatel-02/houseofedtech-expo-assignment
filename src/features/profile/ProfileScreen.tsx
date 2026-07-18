@@ -78,10 +78,10 @@ export default function ProfileScreen() {
           />
         </Animated.View>
         <Animated.View entering={fadeSlide(140)}>
-          {" "}
+
           <SettingsSection title="General">
             <Animated.View entering={fadeSlide(220)}>
-              {" "}
+      
               <SettingsItem
                 title="Dark Mode"
                 subtitle="Switch app appearance"

@@ -112,7 +112,6 @@ export default function DetailScreen() {
         </Animated.View>
 
         <Animated.View entering={fadeSlide(220)}>
-          
           <DescriptionSection description={movie.description} />
         </Animated.View>
         <Animated.View entering={fadeSlide(300)}>
