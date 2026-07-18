@@ -8,7 +8,7 @@ export function useRefresh(onRefreshAction: () => Promise<void>) {
     }
     setRefreshing(true);
     try {
-      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+await Haptics.selectionAsync();
       await onRefreshAction();
     } finally {
       setRefreshing(false);

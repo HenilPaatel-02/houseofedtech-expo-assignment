@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 
 import { FlatList, ListRenderItem, View } from "react-native";
 
@@ -10,6 +10,9 @@ import { ContentCarouselProps } from "./ContentCarousel.types";
 
 import { styles } from "./ContentCarousel.styles";
 
+import Animated from "react-native-reanimated";
+import { staggerFade } from "../../../../animations";
+
 function ContentCarousel({
   title,
   data,
@@ -17,10 +20,23 @@ function ContentCarousel({
   onPressSeeAll,
   showSeeAll = true,
 }: ContentCarouselProps) {
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    hasAnimated.current = true;
+  }, []);
+
   const renderItem: ListRenderItem<Movie> = useCallback(
-    ({ item }) => <MovieCard movie={item} onPress={onPressMovie} />,
+    ({ item, index }) => (
+      <Animated.View
+        entering={hasAnimated.current ? undefined : staggerFade(index)}
+      >
+        <MovieCard movie={item} onPress={onPressMovie} />
+      </Animated.View>
+    ),
     [onPressMovie],
   );
+
   const keyExtractor = useCallback((item: Movie) => item.id, []);
 
   return (

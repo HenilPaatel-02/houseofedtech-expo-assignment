@@ -77,7 +77,10 @@ export default function HomeScreen() {
             onAddToList={() => {}}
           />
         )}
-        <Animated.View entering={fadeSlide(100)}>
+        <Animated.View
+          key={refreshing ? "refreshing" : "loaded"}
+          entering={fadeSlide(0)}
+        >
           <ContentCarousel
             title="Trending"
             data={trending}
