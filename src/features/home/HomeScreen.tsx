@@ -15,6 +15,7 @@ import { useHome } from "./hooks/useHome";
 import { Movie } from "../../types/movie.types";
 import { RootStackParamList } from "../../navigation/navigation.types";
 import { useTheme } from "react-native-paper";
+import HomeSkeleton from "../../components/skeleton/HomeSkeleton";
 
 type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -49,9 +50,8 @@ export default function HomeScreen() {
   );
 
   if (loading) {
-    return <Loader />;
+    return <HomeSkeleton />;
   }
-
   if (error) {
     return <ErrorState message={error} onRetry={refresh} />;
   }
