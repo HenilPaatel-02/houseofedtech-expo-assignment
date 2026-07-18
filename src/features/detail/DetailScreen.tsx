@@ -16,6 +16,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/navigation.types";
 import { Movie } from "../../types/movie.types";
 import { useTheme } from "react-native-paper";
+import DetailSkeleton from "../../components/skeleton/DetailSkeleton";
 
 type DetailScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -37,9 +38,8 @@ export default function DetailScreen() {
   }, [refresh]);
 
   if (loading) {
-    return <Loader />;
+    return <DetailSkeleton />;
   }
-
   if (error) {
     return <ErrorState message={error} onRetry={refresh} />;
   }
