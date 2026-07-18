@@ -41,18 +41,13 @@ export default function DetailScreen() {
   const handleBack = () => {
     navigation.goBack();
   };
-  const handlePlay = () => {
-    console.log("Play");
-  };
-  const handleAddToList = () => {
-    console.log("Add To List");
-  };
-  const handleFavourite = () => {
-    console.log("Favourite");
-  };
-  const handleShare = () => {
-    console.log("Share");
-  };
+  const handlePlay = useCallback(() => {}, []);
+
+  const handleAddToList = useCallback(() => {}, []);
+
+  const handleFavourite = useCallback(() => {}, []);
+
+  const handleShare = useCallback(() => {}, []);
   const handleRelatedMoviePress = useCallback(
     (selectedMovie: Movie) => {
       navigation.push("Detail", { id: selectedMovie.id });

@@ -22,27 +22,13 @@ export default function ProfileScreen() {
   const { mode, setMode } = useAppTheme();
   const { refreshing, onRefresh } = useRefresh(refresh);
 
-  const handleEditProfile = () => {
-    console.log("Edit Profile");
-  };
-  const handleAppearance = () => {
-    console.log("Appearance");
-  };
-  const handleDownloads = () => {
-    console.log("Downloads");
-  };
-  const handleHelp = () => {
-    console.log("Help Center");
-  };
-  const handlePrivacy = () => {
-    console.log("Privacy Policy");
-  };
-  const handleRateApp = () => {
-    console.log("Rate App");
-  };
-  const handleAbout = () => {
-    console.log("About");
-  };
+  const handleEditProfile = useCallback(() => {}, []);
+  const handleAppearance = useCallback(() => {}, []);
+  const handleDownloads = useCallback(() => {}, []);
+  const handleHelp = useCallback(() => {}, []);
+  const handlePrivacy = useCallback(() => {}, []);
+  const handleRateApp = useCallback(() => {}, []);
+  const handleAbout = useCallback(() => {}, []);
 
   if (loading) {
     return <ProfileSkeleton />;
@@ -116,7 +102,6 @@ export default function ProfileScreen() {
 
         <Animated.View entering={fadeSlide(140)}>
           <SettingsSection title="Support">
-  
             <Animated.View entering={fadeSlide(220)}>
               <SettingsItem
                 title="Help Center"
