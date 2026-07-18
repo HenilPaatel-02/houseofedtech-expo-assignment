@@ -11,6 +11,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { styles } from "./MovieCard.styles";
 
 import { MovieCardProps } from "./MovieCard.types";
+import Animated from "react-native-reanimated";
+import { usePressScale } from "../../../../animations";
 
 function MovieCard({
   movie,
@@ -18,58 +20,66 @@ function MovieCard({
   onPress,
 }: MovieCardProps) {
   const theme = useTheme();
-
+  const { animatedStyle, pressIn, pressOut } = usePressScale();
   return (
-    <Pressable style={styles.container} onPress={() => onPress?.(movie)}>
-      <Image
-        source={movie.poster}
-        style={styles.image}
-        contentFit="cover"
-        transition={300}
-      />
-
-      <Text
-        variant="titleMedium"
-        numberOfLines={1}
-        style={[
-          styles.title,
-
-          {
-            color: theme.colors.onSurface,
-          },
-        ]}
+    <Animated.View style={animatedStyle}>
+      {" "}
+      <Pressable
+        style={styles.container}
+        onPress={() => onPress?.(movie)}
+        onPressIn={pressIn}
+        onPressOut={pressOut}
       >
-        {movie.title}
-      </Text>
+        <Image
+          source={movie.poster}
+          style={styles.image}
+          contentFit="cover"
+          transition={300}
+        />
 
-      <View style={styles.infoRow}>
-        <MaterialIcons name="star" size={16} color="#FFC107" />
+        <Text
+          variant="titleMedium"
+          numberOfLines={1}
+          style={[
+            styles.title,
+
+            {
+              color: theme.colors.onSurface,
+            },
+          ]}
+        >
+          {movie.title}
+        </Text>
+
+        <View style={styles.infoRow}>
+          <MaterialIcons name="star" size={16} color="#FFC107" />
+
+          <Text
+            variant="bodySmall"
+            style={{
+              marginLeft: 4,
+
+              color: theme.colors.onSurfaceVariant,
+            }}
+          >
+            {movie.rating}
+          </Text>
+        </View>
 
         <Text
           variant="bodySmall"
-          style={{
-            marginLeft: 4,
+          style={[
+            styles.genre,
 
-            color: theme.colors.onSurfaceVariant,
-          }}
+            {
+              color: theme.colors.onSurfaceVariant,
+            },
+          ]}
         >
-          {movie.rating}
+          {movie.genre.join(", ")}
         </Text>
-      </View>
-
-      <Text
-        variant="bodySmall"
-        style={[
-          styles.genre,
-
-          {
-            color: theme.colors.onSurfaceVariant,
-          },
-        ]}
-      >
-        {movie.genre.join(", ")}
-      </Text>
-    </Pressable>
+      </Pressable>{" "}
+    </Animated.View>
   );
 }
 
