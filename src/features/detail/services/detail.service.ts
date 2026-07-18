@@ -1,22 +1,17 @@
 import { delay } from "../../../services/delay";
 
-import { movieDetail } from "../data/detail.mock";
-import { relatedMovies } from "../data/related.mock";
+import { movies } from "../../home/data/movies.mock";
 
 export const DetailService = {
   async getMovieById(id: string) {
     await delay(1000);
 
-    if (movieDetail.id === id) {
-      return movieDetail;
-    }
-
-    return null;
+    return movies.find((movie) => movie.id === id) ?? null;
   },
 
   async getRelatedMovies(movieId: string) {
     await delay(700);
 
-    return relatedMovies.filter((movie) => movie.id !== movieId);
+    return movies.filter((movie) => movie.id !== movieId).slice(0, 6);
   },
 };

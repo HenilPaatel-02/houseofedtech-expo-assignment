@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  container: { paddingHorizontal: 20, paddingVertical: 20 },
+  container: { paddingHorizontal: 16, paddingVertical: 2 },
   infoRow: {
     flexDirection: "row",
     alignItems: "center",

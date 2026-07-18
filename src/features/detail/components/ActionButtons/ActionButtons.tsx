@@ -21,15 +21,18 @@ function ActionButtons({
       </AnimatedButton>
 
       <View style={styles.secondaryRow}>
-        <AnimatedButton onPress={onAddToList}>
-          <Button mode="outlined" icon="plus" style={styles.secondaryButton}>
-            My List
-          </Button>
-        </AnimatedButton>
+        <View style={styles.secondaryButtonWrap}>
+          <AnimatedButton onPress={onAddToList}>
+            <Button mode="outlined" icon="plus" style={styles.secondaryButton}>
+              My List
+            </Button>
+          </AnimatedButton>
+        </View>
 
         <AnimatedButton onPress={onFavourite}>
           <IconButton icon={isFavourite ? "heart" : "heart-outline"} />
         </AnimatedButton>
+
         <AnimatedButton onPress={onShare}>
           <IconButton icon="share-variant-outline" />
         </AnimatedButton>

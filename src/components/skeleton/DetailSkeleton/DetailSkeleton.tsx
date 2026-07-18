@@ -45,9 +45,9 @@ function DetailSkeleton() {
             <SkeletonBox width="100%" height={48} borderRadius={12} />
 
             <View style={styles.buttonRow}>
-              <SkeletonBox width={100} height={42} />
-              <SkeletonBox width={100} height={42} />
-              <SkeletonBox width={100} height={42} />
+              <SkeletonBox width={160} height={42} />
+              <SkeletonBox width={70} height={42} />
+              <SkeletonBox width={70} height={42} />
             </View>
             <SkeletonBox width="45%" height={24} />
             <SkeletonBox width="100%" height={16} style={{ marginTop: 20 }} />

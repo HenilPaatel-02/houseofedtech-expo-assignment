@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  container: { height: 420, marginBottom: 24 },
+  container: { height: 420, marginBottom: 12 },
   image: { width: "100%", height: "100%" },
   overlay: {
     ...StyleSheet.absoluteFill,

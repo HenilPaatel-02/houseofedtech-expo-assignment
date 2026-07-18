@@ -11,7 +11,7 @@ function HomeSkeleton() {
 
   const renderSection = (key: number) => (
     <View key={key} style={styles.section}>
-      <SkeletonBox width={120} height={26} style={styles.title} />
+      <SkeletonBox width={125} height={26} style={styles.title} />
 
       <ScrollView
         horizontal
@@ -22,7 +22,7 @@ function HomeSkeleton() {
           <SkeletonBox
             key={item}
             width={150}
-            height={225}
+            height={240}
             borderRadius={12}
             style={styles.card}
           />

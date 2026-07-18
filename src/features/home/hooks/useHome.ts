@@ -1,7 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { HomeService } from "../services/home.service";
 import { Movie } from "../../../types/movie.types";
-import { ContinueWatchingMovie } from "../data/continueWatching.mock";
+import { continueWatchingMovies } from "../data/continueWatching.mock";
+
+type ContinueWatchingMovie = Movie & {
+  progress?: number;
+};
 
 export function useHome() {
   const [featured, setFeatured] = useState<Movie | null>(null);

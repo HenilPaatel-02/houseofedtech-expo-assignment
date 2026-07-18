@@ -9,6 +9,7 @@ import { useColorScheme } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PaperProvider } from "react-native-paper";
 import { darkTheme, lightTheme } from "./themes";
+import { StatusBar } from "react-native";
 type ThemeMode = "light" | "dark" | "system";
 interface ThemeContextType {
   mode: ThemeMode;
@@ -38,6 +39,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <ThemeContext.Provider value={value}>
       <PaperProvider theme={isDark ? darkTheme : lightTheme}>
+        <StatusBar
+          translucent={false}
+          backgroundColor={
+            isDark ? darkTheme.colors.background : lightTheme.colors.background
+          }
+          barStyle={isDark ? "light-content" : "dark-content"}
+        />
         {children}
       </PaperProvider>
     </ThemeContext.Provider>

@@ -1,11 +1,18 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  container: { paddingHorizontal: 20, marginTop: 20, marginBottom: 24 },
+  container: { paddingHorizontal: 20, marginTop: 12, marginBottom: 24 },
   playButton: { marginBottom: 16 },
   secondaryRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "center",
     gap: 12,
   },
-  secondaryButton: { flex: 1 },
+
+  secondaryButtonWrap: {
+    flex: 1,
+  },
+
+  secondaryButton: {
+    width: "100%",
+  },
 });

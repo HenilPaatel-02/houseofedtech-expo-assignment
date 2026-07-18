@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     height: 420,
-    marginBottom: 24,
+    marginBottom: 12,
   },
 
   image: {

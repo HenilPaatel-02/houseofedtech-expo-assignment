@@ -67,7 +67,10 @@ export default function DetailScreen() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.background }}
+      edges={["top"]}
+    >
       <DetailHeader
         title={movie.title}
         showTitle={false}

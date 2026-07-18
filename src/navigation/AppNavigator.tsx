@@ -1,18 +1,17 @@
-import React from "react";
-import RootStack from "./RootStack";
-import { useAppTheme } from "../theme";
 import {
   NavigationContainer,
-  DarkTheme as NavigationDarkTheme,
-  DefaultTheme as NavigationLightTheme,
+  DefaultTheme,
+  DarkTheme,
 } from "@react-navigation/native";
+
+import RootStack from "./RootStack";
+import { useAppTheme } from "../theme";
 
 export default function AppNavigator() {
   const { isDark } = useAppTheme();
+
   return (
-    <NavigationContainer
-      theme={isDark ? NavigationDarkTheme : NavigationLightTheme}
-    >
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <RootStack />
     </NavigationContainer>
   );
