@@ -10,12 +10,14 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import { HeroBannerProps } from "./HeroBanner.types";
 import { styles } from "./HeroBanner.styles";
-
+import Animated from "react-native-reanimated";
+import { useFadeAnimation, useSlideUpAnimation } from "../../../../animations";
 function HeroBanner({ movie, onPlay, onAddToList }: HeroBannerProps) {
   const theme = useTheme();
-
+  const fadeAnimation = useFadeAnimation();
+  const slideAnimation = useSlideUpAnimation();
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, fadeAnimation, slideAnimation]}>
       <Image
         source={movie.banner}
         style={styles.image}
@@ -99,7 +101,7 @@ function HeroBanner({ movie, onPlay, onAddToList }: HeroBannerProps) {
           </Button>
         </View>
       </LinearGradient>
-    </View>
+    </Animated.View>
   );
 }
 
