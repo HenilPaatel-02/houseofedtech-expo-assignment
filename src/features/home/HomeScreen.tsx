@@ -1,0 +1,108 @@
+import React, { useCallback, useState } from "react";
+import { RefreshControl, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+import HeroBanner from "./components/HeroBanner";
+import ContentCarousel from "./components/ContentCarousel";
+
+import ErrorState from "../../components/ErrorState/ErrorState";
+import EmptyState from "../../components/EmptyState/EmptyState";
+
+import { useHome } from "./hooks/useHome";
+import { Movie } from "../../types/movie.types";
+import { RootStackParamList } from "../../navigation/navigation.types";
+import { useTheme } from "react-native-paper";
+import HomeSkeleton from "../../components/skeleton/HomeSkeleton";
+import Animated from "react-native-reanimated";
+import { fadeSlide } from "../../animations";
+import { useRefresh } from "../../hooks/useRefresh";
+
+type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
+export default function HomeScreen() {
+  const navigation = useNavigation<HomeNavigationProp>();
+  const theme = useTheme();
+  const {
+    featured,
+    trending,
+    recommended,
+    continueWatching,
+    loading,
+    error,
+    refresh,
+  } = useHome();
+
+  const { refreshing, onRefresh } = useRefresh(refresh);
+
+  const handleMoviePress = useCallback(
+    (movie: Movie) => {
+      navigation.navigate("Detail", {
+        id: movie.id,
+      });
+    },
+    [navigation],
+  );
+
+  if (loading) {
+    return <HomeSkeleton />;
+  }
+  if (error) {
+    return <ErrorState message={error} onRetry={refresh} />;
+  }
+
+  if (featured == null && trending.length === 0) {
+    return <EmptyState title="No Content Found" />;
+  }
+
+  return (
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.background }}
+      edges={["top"]}
+    >
+      <ScrollView
+        style={{
+          backgroundColor: theme.colors.background,
+        }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        {featured && (
+          <HeroBanner
+            movie={featured}
+            onPlay={handleMoviePress}
+            onAddToList={() => {}}
+          />
+        )}
+        <Animated.View
+          key={refreshing ? "refreshing" : "loaded"}
+          entering={fadeSlide(0)}
+        >
+          <ContentCarousel
+            title="Trending"
+            data={trending}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
+        <Animated.View entering={fadeSlide(180)}>
+          <ContentCarousel
+            title="Recommended"
+            data={recommended}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
+
+        <Animated.View entering={fadeSlide(260)}>
+          <ContentCarousel
+            title="Continue Watching"
+            data={continueWatching}
+            onPressMovie={handleMoviePress}
+          />
+        </Animated.View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
